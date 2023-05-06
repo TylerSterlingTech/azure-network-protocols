@@ -11,7 +11,7 @@ In this demonstration, we observe various network traffic to and from Azure Virt
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
+- Various Network Protocols
 - Wireshark (Protocol Analyzer)
 - Powershell
 
@@ -35,7 +35,7 @@ In this demonstration, we observe various network traffic to and from Azure Virt
 <img src="https://i.imgur.com/pqxfPdI.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-After configuring the resource group and virtual machines, and connecting to one of the virtual machines with the remote desktop application, the hostname and username can be observed. The username was previously randomly generated with Powershell. 
+After configuring the resource group and virtual machines, and connecting to one of the virtual machines with remote desktop protocol, the hostname and username can be observed. The username was previously randomly generated with Powershell_ise. 
 </p>
 <br />
 
@@ -43,7 +43,7 @@ After configuring the resource group and virtual machines, and connecting to one
 <img src="https://i.imgur.com/F4fAQkn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-To download Wireshark, wireshark.org/download/html should be accessed, and "Windows Installer (64-bit)" should be selected.
+To download Wireshark, wireshark.org/download/html is accessed, and "Windows Installer (64-bit)" is selected.
 </p>
 <br />
 
@@ -51,7 +51,7 @@ To download Wireshark, wireshark.org/download/html should be accessed, and "Wind
 <img src="https://i.imgur.com/yYCsZZf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-The installation of Wireshark on the virtual machine has been successfully completed.
+The installation of Wireshark on the virtual machine is successfully completed.
 </p>
 <br />
 
@@ -59,7 +59,7 @@ The installation of Wireshark on the virtual machine has been successfully compl
 <img src="https://i.imgur.com/jXiTFdJ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-After opening Wireshark, the ethernet adaptor should be selected.
+After opening Wireshark, the ethernet adaptor is selected.
 </p>
 <br />
 
@@ -75,7 +75,7 @@ It can be seen that there is not any network traffic; this is because ICMP was e
 <img src="https://i.imgur.com/ldeERZf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-After opening Powershell_ise, a perpetual ping is entered; network traffic can now be seen in Wireshark. The private address for the second virtual machine that was created was needed for the perpetual ping command (ping -t 10.0.0.4). The successful replies and requests can be observed, as well as the sources and destinations between the two virtual machines.
+After opening Powershell_ise, a perpetual ping is entered; network traffic can now be seen in Wireshark. The private address for the second virtual machine that was created was needed for the perpetual ping command (ping -t 10.0.0.4). The successful replies and requests can be observed, as well as the sources and destinations from the two virtual machines.
 </p>
 <br />
 
@@ -91,7 +91,7 @@ The perpetual ping is terminated with the Control-C command.
 <img src="https://i.imgur.com/cgL7Ojp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Within Azure VMs, the network security group for the virtual machine is accessed. The goal here is to deny inbound ICMP traffic. "Inbound security rules" is selected, and then "Add inbound security rule". The security rule is configured to deny IMCP traffic, and is set with a priority (200) that is less than the next highest priority (300); this ensures thatthe added rule holds the highest priority.
+Within Azure VMs, the network security group for the virtual machine is accessed. The goal here is to deny inbound ICMP traffic. "Inbound security rules" is selected, followed by "Add inbound security rule". The security rule is configured to deny IMCP traffic, and is set with a priority (200) that is less than the next highest priority (300); this ensures that the added rule holds the highest priority.
 </p>
 <br />
 
@@ -115,7 +115,7 @@ If the security rule was instead set to "Allow" rather than "Deny"...
 <img src="https://i.imgur.com/hiXtioN.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-...the connectivity is again established, since the ICMP has been opened up on the virtual machine's firewall. 
+...the connectivity is again established, since the ICMP has been opened on the virtual machine's firewall. 
 </p>
 <br />
 
@@ -131,7 +131,7 @@ DCHP traffic will now be observed; DHCP is used to automatically assign IP addre
 <img src="https://i.imgur.com/0yOXksQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-To force a renewal of an IP adress, the command "ipconfig /renew" can be entered. It can be seen that the DHCP traffic was solely one request and one reply, reissuing the IP address. 
+To force a renewal of an IP address, the command "ipconfig /renew" can be entered. It can be seen that the DHCP traffic was solely one request and one reply, working to reissue the IP address. 
 </p>
 <br />
 
@@ -147,7 +147,7 @@ DNS traffic will now be observed. Within the Powershell command line, "nslookup 
 <img src="https://i.imgur.com/UdgJYnP.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-TCP port 3389 traffic (remote desktop protocol) will now be observed. Despite not enterign a command on Powershell, it can be seen that there is still ample traffic. This is because there is a live/active RDP session from the host computer to the virtual machine that is currently being used.
+TCP port 3389 traffic (remote desktop protocol) will now be observed. Despite not entering a command on Powershell_ise, it can be seen that there is still ample traffic. This is because there is a live/active RDP session from the host computer to the virtual machine that is currently being used.
 </p>
 <br />
 
